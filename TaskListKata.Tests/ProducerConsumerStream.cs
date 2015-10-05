@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Tasks
+namespace TaskListKata.Tests
 {
 	class ProducerConsumerStream : Stream
 	{

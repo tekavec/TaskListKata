@@ -1,6 +1,6 @@
 using System;
 
-namespace Tasks
+namespace TaskListKata
 {
 	public class RealConsole : IConsole
 	{

@@ -1,8 +1,7 @@
-﻿using NUnit.Framework;
-using System;
-using System.IO;
+﻿using System;
+using NUnit.Framework;
 
-namespace Tasks
+namespace TaskListKata.Tests
 {
 	[TestFixture]
 	public sealed class ApplicationTest

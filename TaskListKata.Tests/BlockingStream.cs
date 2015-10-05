@@ -1,8 +1,7 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Threading;
 
-namespace Tasks
+namespace TaskListKata.Tests
 {
 	public class BlockingStream : Stream
 	{
