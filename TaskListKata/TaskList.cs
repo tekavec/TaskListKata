@@ -40,7 +40,7 @@ namespace TaskListKata
         {
             string[] commandRest = commandLine.Split(" ".ToCharArray(), 2);
             string commandName = commandRest[0];
-            var command = _taskCommandFactory.CreateCommand(commandName);
+            var command = _taskCommandFactory.CreateCommand(commandLine);
             command.Execute();
             switch (commandName)
             {

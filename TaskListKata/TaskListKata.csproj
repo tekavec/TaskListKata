@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddTaskCommand.cs" />
+    <Compile Include="DefaultCommand.cs" />
     <Compile Include="IConsole.cs" />
     <Compile Include="ITaskCommand.cs" />
     <Compile Include="Program.cs" />
