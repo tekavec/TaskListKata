@@ -5,42 +5,44 @@ namespace TaskListKata
 {
     public sealed class TaskList
     {
+        private readonly IConsole _console;
+        private readonly ProjectRepository _projectRepository;
+        private readonly TaskCommandFactory _taskCommandFactory;
         private const string QuitCommandName = "quit";
 
-        private readonly IConsole _console;
         private readonly IDictionary<string, IList<Task>> _tasks = new Dictionary<string, IList<Task>>();
 
         private long _lastId;
 
-        public TaskList(IConsole console)
+        public TaskList(IConsole console, ProjectRepository projectRepository)
         {
             _console = console;
+            _projectRepository = projectRepository;
+            _taskCommandFactory = new TaskCommandFactory(console, projectRepository);
         }
 
-        public static void Main(string[] args)
-        {
-            new TaskList(new RealConsole()).Run();
-        }
 
         public void Run()
         {
             while (true)
             {
                 _console.Write("> ");
-                string command = _console.ReadLine();
-                if (command == QuitCommandName)
+                string commandLine = _console.ReadLine();
+                if (commandLine == QuitCommandName)
                 {
                     break;
                 }
-                Execute(command);
+                ParseCommandLine(commandLine);
             }
         }
 
-        public void Execute(string commandLine)
+        public void ParseCommandLine(string commandLine)
         {
             string[] commandRest = commandLine.Split(" ".ToCharArray(), 2);
-            string command = commandRest[0];
-            switch (command)
+            string commandName = commandRest[0];
+            var command = _taskCommandFactory.CreateCommand(commandName);
+            command.Execute();
+            switch (commandName)
             {
                 case "show":
                     Show();
@@ -58,7 +60,7 @@ namespace TaskListKata
                     Help();
                     break;
                 default:
-                    Error(command);
+                    Error(commandName);
                     break;
             }
         }

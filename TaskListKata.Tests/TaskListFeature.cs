@@ -9,12 +9,14 @@ namespace TaskListKata.Tests
         public const string Prompt = "> ";
         private IConsole _fakeConsole;
         private TaskList _taskList;
+        private ProjectRepository _projectRepository;
 
         [SetUp]
         public void Init()
         {
             _fakeConsole = Substitute.For<IConsole>();
-            _taskList = new TaskList(_fakeConsole);
+            _projectRepository = new ProjectRepository();
+            _taskList = new TaskList(_fakeConsole, _projectRepository);
         }
 
         [Test]
@@ -129,7 +131,7 @@ namespace TaskListKata.Tests
 
         private void Execute(string command)
         {
-            _taskList.Execute(command);
+            _taskList.ParseCommandLine(command);
         }
 
     }

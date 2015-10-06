@@ -30,7 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TaskListKata.TaskList</StartupObject>
+    <StartupObject>TaskListKata.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,9 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IConsole.cs" />
+    <Compile Include="ITaskCommand.cs" />
+    <Compile Include="MyTask.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="ProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RealConsole.cs" />
+    <Compile Include="ShowCommand.cs" />
     <Compile Include="Task.cs" />
+    <Compile Include="TaskCommandFactory.cs" />
     <Compile Include="TaskList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
