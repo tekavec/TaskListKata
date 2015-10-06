@@ -35,7 +35,7 @@ namespace TaskListKata
 			}
 		}
 
-		private void Execute(string commandLine)
+		public void Execute(string commandLine)
 		{
 			var commandRest = commandLine.Split(" ".ToCharArray(), 2);
 			var command = commandRest[0];
