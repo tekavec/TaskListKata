@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="IConsole.cs" />
     <Compile Include="ITaskCommand.cs" />
-    <Compile Include="MyTask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectRepository.cs" />

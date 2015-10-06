@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectRepositoryShould.cs" />
+    <Compile Include="ProjectShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowCommandShould.cs" />
     <Compile Include="TaskCommandFactoryShould.cs" />
