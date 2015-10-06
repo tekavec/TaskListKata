@@ -18,7 +18,7 @@ namespace TaskListKata.Tests
         }
 
         [Test]
-        public void HandlingTasks()
+        public void AddProjectsWithTasksAndCheckSomeTasksAndShowATaskPerProjectList()
         {
             Execute("show");
 
@@ -62,9 +62,69 @@ namespace TaskListKata.Tests
                     _fakeConsole.WriteLine();
                 }
             );
-
             Execute("quit");
+        }
 
+        [Test]
+        public void UncheckExistingTasks()
+        {
+            Execute("add project secrets");
+            Execute("add task secrets Eat more donuts.");
+            Execute("check 1");
+            Execute("show");
+            Execute("uncheck 1");
+            Execute("show");
+
+            Received.InOrder(() =>
+            {
+                _fakeConsole.WriteLine("secrets");
+                _fakeConsole.WriteLine("    [{0}] {1}: {2}", 'x', 1L, "Eat more donuts.");
+                _fakeConsole.WriteLine();
+
+                _fakeConsole.WriteLine("secrets");
+                _fakeConsole.WriteLine("    [{0}] {1}: {2}", ' ', 1L, "Eat more donuts.");
+                _fakeConsole.WriteLine();
+            });
+        }
+
+        [Test]
+        public void CheckNonexistentTasks()
+        {
+            Execute("add project secrets");
+            Execute("add task secrets Eat more donuts.");
+            Execute("check 2");
+
+            Received.InOrder(() =>
+            {
+                _fakeConsole.WriteLine("Could not find a task with an ID of {0}.", 2);
+            });
+        }
+
+        [Test]
+        public void AddTaskToNonexistentProject()
+        {
+            Execute("add project secrets");
+            Execute("add task training Eat more donuts.");
+
+            _fakeConsole.Received().WriteLine("Could not find a project with the name \"{0}\".", "training");
+        }
+
+        [Test]
+        public void ShowHelpContent()
+        {
+            Execute("help");
+
+            Received.InOrder(() =>
+            {
+                _fakeConsole.WriteLine("Commands:");
+                _fakeConsole.WriteLine("  show");
+                _fakeConsole.WriteLine("  add project <project name>");
+                _fakeConsole.WriteLine("  add task <project name> <task description>");
+                _fakeConsole.WriteLine("  check <task ID>");
+                _fakeConsole.WriteLine("  uncheck <task ID>");
+                _fakeConsole.WriteLine();
+
+            });
         }
 
         private void Execute(string command)
