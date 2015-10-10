@@ -10,13 +10,15 @@ namespace TaskListKata.Tests
         private IConsole _fakeConsole;
         private TaskList _taskList;
         private ProjectRepository _projectRepository;
+        private TaskRepository _taskRepository;
 
         [SetUp]
         public void Init()
         {
             _fakeConsole = Substitute.For<IConsole>();
             _projectRepository = new ProjectRepository();
-            _taskList = new TaskList(_fakeConsole, _projectRepository);
+            _taskRepository = new TaskRepository();
+            _taskList = new TaskList(_fakeConsole, _projectRepository, _taskRepository);
         }
 
         [Test]

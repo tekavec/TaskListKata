@@ -47,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProjectCommandShould.cs" />
     <Compile Include="AddTaskCommandShould.cs" />
+    <Compile Include="SetDoneCommandShould.cs" />
     <Compile Include="DefaultCommandShould.cs" />
     <Compile Include="ProjectRepositoryShould.cs" />
     <Compile Include="ProjectShould.cs" />
@@ -55,6 +57,7 @@
     <Compile Include="ShowCommandShould.cs" />
     <Compile Include="TaskCommandFactoryShould.cs" />
     <Compile Include="TaskListFeature.cs" />
+    <Compile Include="TaskRepositoryShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TaskListKata\TaskListKata.csproj">

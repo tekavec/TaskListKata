@@ -42,9 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProjectCommand.cs" />
     <Compile Include="AddTaskCommand.cs" />
+    <Compile Include="SetDoneCommand.cs" />
     <Compile Include="DefaultCommand.cs" />
     <Compile Include="IConsole.cs" />
+    <Compile Include="IProjectRepository.cs" />
     <Compile Include="ITaskCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs" />
@@ -55,6 +58,7 @@
     <Compile Include="Task.cs" />
     <Compile Include="TaskCommandFactory.cs" />
     <Compile Include="TaskList.cs" />
+    <Compile Include="TaskRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

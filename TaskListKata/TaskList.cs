@@ -14,11 +14,11 @@ namespace TaskListKata
 
         private long _lastId;
 
-        public TaskList(IConsole console, ProjectRepository projectRepository)
+        public TaskList(IConsole console, ProjectRepository projectRepository, TaskRepository taskRepository)
         {
             _console = console;
             _projectRepository = projectRepository;
-            _taskCommandFactory = new TaskCommandFactory(console, projectRepository);
+            _taskCommandFactory = new TaskCommandFactory(console, projectRepository, taskRepository);
         }
 
 
@@ -42,27 +42,27 @@ namespace TaskListKata
             string commandName = commandRest[0];
             var command = _taskCommandFactory.CreateCommand(commandLine);
             command.Execute();
-            switch (commandName)
-            {
-                case "show":
-                    Show();
-                    break;
-                case "add":
-                    Add(commandRest[1]);
-                    break;
-                case "check":
-                    Check(commandRest[1]);
-                    break;
-                case "uncheck":
-                    Uncheck(commandRest[1]);
-                    break;
-                case "help":
-                    Help();
-                    break;
-                default:
-                    Error(commandName);
-                    break;
-            }
+            //switch (commandName)
+            //{
+            //    case "show":
+            //        Show();
+            //        break;
+            //    case "add":
+            //        Add(commandRest[1]);
+            //        break;
+            //    case "check":
+            //        Check(commandRest[1]);
+            //        break;
+            //    case "uncheck":
+            //        Uncheck(commandRest[1]);
+            //        break;
+            //    case "help":
+            //        Help();
+            //        break;
+            //    default:
+            //        Error(commandName);
+            //        break;
+            //}
         }
 
         private void Show()

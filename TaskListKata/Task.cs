@@ -2,8 +2,11 @@ namespace TaskListKata
 {
 	public class Task
 	{
-	    public Task(string description)
+	    private readonly Project _project;
+
+	    public Task(string description, Project project)
 	    {
+	        _project = project;
 	        Description = description;
 	    }
 
@@ -11,11 +14,16 @@ namespace TaskListKata
 	    {
 	    }
 
-	    public long Id { get; set; }
+        public long Id { get; set; }
 
 		public string Description { get; set; }
 
 		public bool Done { get; set; }
+
+	    public Project Project()
+	    {
+	        return _project;
+	    }
 
 	    protected bool Equals(Task other)
 	    {
